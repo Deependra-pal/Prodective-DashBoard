@@ -20,8 +20,10 @@ body {
   --tri2: #74512d;
   --red: #e74c3c;
   --btn: #f1c40f;
-  --green: green;
-  --black:#000;
+  --green: rgb(9,138,89);
+  --black: #000;
+  --bg-main: #0f172a;
+  --accent: #3b82f6;
 }
 
 @font-face {
@@ -44,32 +46,96 @@ main {
   width: 100%;
   background-color: var(--sec);
 }
+main nav {
+  width: 100%;
+  height: 60px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+main nav .nav-in {
+  display: flex;
+  background-color: var(--tri2);
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+main nav .nav-in h2 {
+  font-weight: 700;
+}
 main section.allElems {
   position: absolute;
-  height: 100%;
   width: 100%;
-  padding: 40px;
-  padding-top: 120px;
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
+  padding: 20px;
 }
-main section.allElems .elem {
-  height: 380px;
+main section.allElems .weather-header {
+  position: relative;
+  height: 30%;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  background-color: var(--tri2);
+}
+main section.allElems .weather-header .content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+  color: white;
+}
+main section.allElems .weather-header .left .time {
+  font-size: 36px;
+  margin: 0;
+  font-weight: bold;
+}
+main section.allElems .weather-header .left .location {
+  font-size: 22px;
+  margin-top: 5px;
+  opacity: 0.9;
+}
+main section.allElems .weather-header .right {
+  text-align: right;
+}
+main section.allElems .weather-header .right .temp {
+  font-size: 32px;
+  margin: 0;
+  font-weight: bold;
+}
+main section.allElems .weather-header .right .condition {
+  font-size: 16px;
+  margin: 5px 0;
+}
+main section.allElems .weather-header .right p {
+  margin: 2px 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+main section.allElems .all-feature {
+  display: flex;
+  justify-content: space-between;
+  height: 60%;
+  width: 100%;
+}
+main section.allElems .all-feature .elem {
+  height: 350px;
   width: 280px;
   position: relative;
   border-radius: 0.5rem;
   overflow: hidden;
   transition: all ease-in 0.3s;
 }
-main section.allElems .elem h2 {
+main section.allElems .all-feature .elem h2 {
   position: absolute;
   bottom: 5%;
   right: 5%;
   font-size: 25px;
   font-weight: 500;
 }
-main section.allElems .elem img {
+main section.allElems .all-feature .elem img {
   height: 100%;
   width: 100%;
   -o-object-fit: cover;
@@ -87,6 +153,7 @@ main .fullPage {
   display: none;
   padding-top: 40px;
   position: relative;
+  max-height: 120%;
 }
 main .fullPage .backbtn {
   position: absolute;
@@ -479,4 +546,50 @@ main .motivation-page .motivation-container .motivation-wrapper .author-name h2 
   font-style: italic;
   border-radius: 20px;
   color: var(--black);
+}
+main .pomodoro-full-page {
+  display: block;
+}
+main .pomodoro-full-page h1 {
+  font-size: 45px;
+}
+main .pomodoro-full-page .pomo-timer {
+  height: 400px;
+  width: 500px;
+  border-radius: 10px;
+  background-color: var(--tri1);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: center;
+  justify-content: center;
+}
+main .pomodoro-full-page .pomo-timer h2 {
+  font-size: 50px;
+}
+main .pomodoro-full-page .pomo-timer h4 {
+  background-color: var(--green);
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+}
+main .pomodoro-full-page .pomo-timer button {
+  background-color: var(--tri2);
+  padding: 10px 20px;
+  font-size: 22px;
+  border-radius: 10px;
+  margin: 10px;
+  border: none;
+  box-shadow: 7px 7px 0px var(--black);
+  transition: all ease 0.1s;
+  font-weight: 700;
+}
+main .pomodoro-full-page .pomo-timer button:active {
+  scale: 0.96;
 }/*# sourceMappingURL=style.css.map */

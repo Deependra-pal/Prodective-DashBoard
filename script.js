@@ -2,10 +2,14 @@ function openFeature() {
   var allElems = document.querySelectorAll(".allElems .elem");
   var fullPage = document.querySelectorAll(".fullPage");
   var backBtn = document.querySelectorAll(".fullPage .backbtn");
+  var header = document.querySelector('.weather-header')
+  console.log(header);
+  
 
   allElems.forEach((e) => {
     e.addEventListener("click", () => {
       fullPage[e.id].style.display = "block";
+       header.style.display = "none"
     });
   });
 
@@ -13,6 +17,7 @@ function openFeature() {
   backBtn.forEach((back) => {
     back.addEventListener("click", () => {
       fullPage[back.id].style.display = "none";
+      header.style.display = "block"
     });
   });
 }
@@ -214,7 +219,6 @@ restartData();
 Planner();
 date();
 
-
 function motivationalQuote() {
   var currentDate = new Date().toISOString().split("T")[0];
 
@@ -267,3 +271,76 @@ function motivationalQuote() {
   }
 }
 motivationalQuote();
+
+ 
+
+
+
+
+function weatherFancilitiy(){
+  // api & key
+var apikeys = "80c2275973964ae193961552260104";
+var city = "Ghaziabad";
+
+// selection
+
+var loc = document.querySelector(".left .location");
+var temp = document.querySelector(".right .temp");
+var humidity = document.querySelector(".content .right .Humidity");
+var wind = document.querySelector(".right .Wind");
+var percipitation = document.querySelector(".right .percipitation");
+var condition = document.querySelector(".right .condition");
+var Day = document.querySelector(".left .time");
+var dateTrack = document.querySelector(".left .date");
+console.log(date.innerHTML);
+
+async function weatherAPI() {
+  const response = await fetch(
+    `http://api.weatherapi.com/v1/current.json?key=${apikeys}&q=${city}`,
+  );
+  const data = await response.json();
+  console.log(data);
+
+  loc.innerHTML = `${data.location.name} , ${data.location.region}`;
+  temp.innerHTML = `${Math.floor(data.current.temp_c)}°C`;
+  humidity.innerHTML = `Humidity: ${data.current.humidity}%`;
+  wind.innerHTML = `Wind: ${Math.floor(data.current.wind_kph)}km/h`;
+  percipitation.innerHTML = `percipitation: ${data.current.precip_mm}`;
+  condition.innerHTML = `condition: ${data.current.condition.text}`;
+}
+weatherAPI();
+
+function timeDate() {
+  let date = new Date();
+
+  var liveDay = date.toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "long",
+  });
+
+  var findDay = liveDay.split(" ")[1];
+  var findMonth = liveDay.split(" ")[0];
+
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var seconds = date.getSeconds();
+  var findDate = date.getDate();
+  var findYear = date.getFullYear();
+
+  Day.innerHTML = `${findDay}, ${hours}:${minutes}`;
+  dateTrack.innerHTML = `${findDate} ${findMonth} ${findYear}`;
+
+  if (hours > 12) {
+    Day.innerHTML = `${findDay}, ${String(hours - 12).padStart("2", 0)}:${String(minutes).padStart("2", 0)}:${String(seconds).padStart("2", 0)} PM`;
+  } else {
+    Day.innerHTML = `${findDay}, ${String(hours).padStart("2", 0)}:${minutes}:${String(seconds).padStart("2", 0)} AM`;
+  }
+}
+
+setInterval(() => {
+  timeDate();
+}, 1000);
+ }
+ weatherFancilitiy()
+
+
