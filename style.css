@@ -20,7 +20,7 @@ body {
   --tri2: #74512d;
   --red: #e74c3c;
   --btn: #f1c40f;
-  --green: rgb(9,138,89);
+  --green: rgb(9, 138, 89);
   --black: #000;
   --bg-main: #0f172a;
   --accent: #3b82f6;
@@ -547,9 +547,6 @@ main .motivation-page .motivation-container .motivation-wrapper .author-name h2 
   border-radius: 20px;
   color: var(--black);
 }
-main .pomodoro-full-page {
-  display: block;
-}
 main .pomodoro-full-page h1 {
   font-size: 45px;
 }
@@ -568,25 +565,23 @@ main .pomodoro-full-page .pomo-timer {
   align-items: center;
   justify-content: center;
 }
+main .pomodoro-full-page .pomo-timer h3 {
+  background-color: var(--green);
+  padding: 5px 8px;
+  border-radius: 5px;
+  font-size: 25px;
+}
 main .pomodoro-full-page .pomo-timer h2 {
   font-size: 50px;
-}
-main .pomodoro-full-page .pomo-timer h4 {
-  background-color: var(--green);
-  width: -moz-fit-content;
-  width: fit-content;
-  border-radius: 10px;
-  padding: 10px 15px;
-  margin-bottom: 20px;
 }
 main .pomodoro-full-page .pomo-timer button {
   background-color: var(--tri2);
   padding: 10px 20px;
   font-size: 22px;
-  border-radius: 10px;
+  border-radius: 5px;
   margin: 10px;
   border: none;
-  box-shadow: 7px 7px 0px var(--black);
+  box-shadow: 4px 3px 0px var(--black);
   transition: all ease 0.1s;
   font-weight: 700;
 }
