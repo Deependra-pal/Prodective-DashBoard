@@ -52,6 +52,14 @@ main {
     padding: 20px;
     margin-bottom: 20px;
 
+    .theme{
+      padding: 10px 20px ;
+      background-color: var(--bg-main);
+      border-radius: 10px;
+      cursor: pointer;
+
+    }
+
     .nav-in {
       display: flex;
       background-color: var(--tri2);
@@ -64,7 +72,6 @@ main {
         font-weight: 700;
       }
     }
-
   }
 
   section.allElems {
@@ -130,12 +137,15 @@ main {
     .all-feature {
       display: flex;
       justify-content: space-between;
+      gap: 20px;
       height: 60%;
       width: 100%;
 
+       
+
       .elem {
-        height: 350px;
-        width: 280px;
+        height: 400px;
+        flex: 1;
         position: relative;
         border-radius: 0.5rem;
         overflow: hidden;
@@ -146,7 +156,7 @@ main {
           bottom: 5%;
           right: 5%;
           font-size: 25px;
-          font-weight: 500;
+          font-weight: 700;
         }
 
         img {
@@ -455,7 +465,6 @@ main {
   }
 
   .daily-Planner {
-    // display: block;
     height: 100%;
     width: 100%;
     padding: 10px 20px;
@@ -472,7 +481,6 @@ main {
       font-size: 28px;
       font-weight: 600;
       color: white;
-      // margin-bottom: 20px;
       position: relative;
 
       &::after {
@@ -638,8 +646,6 @@ main {
   }
 
   .pomodoro-full-page {
-    // display: block;
-
     h1 {
       font-size: 45px;
     }
@@ -688,5 +694,3 @@ main {
     }
   }
 }
-
-
