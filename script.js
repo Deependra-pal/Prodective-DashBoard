@@ -336,8 +336,7 @@ function weatherFancilitiy() {
   }, 1000);
 }
 
-weatherFancilitiy()
-
+weatherFancilitiy();
 
 function dailyPlanner() {
   let timerInterval = null;
@@ -410,8 +409,71 @@ function dailyPlanner() {
 
 dailyPlanner();
 
+var themeBtn = document.querySelector(".nav-in .theme");
+var rootElement = document.documentElement;
+var flag = 0;
 
-var rootElement = document.documentElement
- 
-rootElement.style.setProperty("--pri","#000")
+const themes = [
+  {
+    name: "sunset",
+    pri: "#F8F4E1",
+    sec: "#222831",
+    tri1: "#948979",
+    tri2: "#393E46",
+  },
+  {
+    name: "midnight",
+    pri: "#ffffff",
+    sec: "#1e293b",
+    tri1: "#94a3b8",
+    tri2: "#020617",
+  },
+  {
+    name: "forest",
+    pri: "#ffffff",
+    sec: "#1b4332",
+    tri1: "#95d5b2",
+    tri2: "#081c15",
+  },
+  {
+    name: "royal",
+    pri: "#ffffff",
+    sec: "#2b2d42",
+    tri1: "#8d99ae",
+    tri2: "#1a1b26",
+  },
+  {
+    pri: "#f8f4e1",
+    sec: "#381c0a",
+    tri1: "#e5b299",
+    tri2: "#74512d",
+  },
+];
 
+let currentTheme = 0;
+
+function applyTheme(theme) {
+  rootElement.style.setProperty("--pri", theme.pri);
+  rootElement.style.setProperty("--sec", theme.sec);
+  rootElement.style.setProperty("--tri1", theme.tri1);
+  rootElement.style.setProperty("--tri2", theme.tri2);
+}
+
+//  Button click → switch theme
+
+themeBtn.addEventListener("click", () => {
+  currentTheme = (currentTheme + 1) % themes.length;
+  applyTheme(themes[currentTheme]);
+
+  // save theme
+  localStorage.setItem("themeIndex", currentTheme);
+});
+
+// ✅ Load saved theme on refresh
+window.addEventListener("DOMContentLoaded", () => {
+  const savedTheme = localStorage.getItem("themeIndex");
+  if (savedTheme !== null) {
+    currentTheme = savedTheme;
+  }
+  applyTheme(themes[currentTheme]);
+});
