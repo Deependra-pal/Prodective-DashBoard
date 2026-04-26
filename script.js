@@ -272,12 +272,9 @@ function motivationalQuote() {
 motivationalQuote();
 
 function weatherFancilitiy() {
-  // api & key
   var apikeys = "80c2275973964ae193961552260104";
-  var city = "Ghaziabad";
 
-  // selection
-
+ 
   var loc = document.querySelector(".left .location");
   var temp = document.querySelector(".right .temp");
   var humidity = document.querySelector(".content .right .Humidity");
@@ -286,24 +283,47 @@ function weatherFancilitiy() {
   var condition = document.querySelector(".right .condition");
   var Day = document.querySelector(".left .time");
   var dateTrack = document.querySelector(".left .date");
-  console.log(date.innerHTML);
 
-  async function weatherAPI() {
+  
+  async function weatherAPI(lat, lon) {
     const response = await fetch(
-      `http://api.weatherapi.com/v1/current.json?key=${apikeys}&q=${city}`,
+      `https://api.weatherapi.com/v1/current.json?key=${apikeys}&q=${lat},${lon}`
     );
     const data = await response.json();
-    console.log(data);
 
     loc.innerHTML = `${data.location.name} , ${data.location.region}`;
     temp.innerHTML = `${Math.floor(data.current.temp_c)}°C`;
     humidity.innerHTML = `Humidity: ${data.current.humidity}%`;
     wind.innerHTML = `Wind: ${Math.floor(data.current.wind_kph)}km/h`;
     percipitation.innerHTML = `Heat Index: ${data.current.heatindex_c}`;
-    condition.innerHTML = `condition: ${data.current.condition.text}`;
+    condition.innerHTML = `Condition: ${data.current.condition.text}`;
   }
-  weatherAPI();
 
+  
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          let lat = position.coords.latitude;
+          let lon = position.coords.longitude;
+
+          weatherAPI(lat, lon);
+        },
+        (error) => {
+          console.log("Location denied, using default");
+
+           
+          weatherAPI("Ghaziabad");
+        }
+      );
+    } else {
+      weatherAPI("Ghaziabad");
+    }
+  }
+
+  getLocation(); 
+
+   
   function timeDate() {
     let date = new Date();
 
@@ -321,14 +341,13 @@ function weatherFancilitiy() {
     var findDate = date.getDate();
     var findYear = date.getFullYear();
 
-    Day.innerHTML = `${findDay}, ${hours}:${minutes}`;
-    dateTrack.innerHTML = `${findDate} ${findMonth} ${findYear}`;
-
     if (hours > 12) {
-      Day.innerHTML = `${findDay}, ${String(hours - 12).padStart("2", 0)}:${String(minutes).padStart("2", 0)}:${String(seconds).padStart("2", 0)} PM`;
+      Day.innerHTML = `${findDay}, ${String(hours - 12).padStart(2, 0)}:${String(minutes).padStart(2, 0)}:${String(seconds).padStart(2, 0)} PM`;
     } else {
-      Day.innerHTML = `${findDay}, ${String(hours).padStart("2", 0)}:${minutes}:${String(seconds).padStart("2", 0)} AM`;
+      Day.innerHTML = `${findDay}, ${String(hours).padStart(2, 0)}:${String(minutes).padStart(2, 0)}:${String(seconds).padStart(2, 0)} AM`;
     }
+
+    dateTrack.innerHTML = `${findDate} ${findMonth} ${findYear}`;
   }
 
   setInterval(() => {
