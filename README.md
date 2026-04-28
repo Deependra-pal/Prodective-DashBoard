@@ -1,19 +1,20 @@
-TODO list Feture  
-Todo Dashboard
+# 🧠 Productive Dashboard
 
-Features:
-- Add tasks with details
-- Mark tasks as important
-- Complete / delete tasks
-- Task details dropdown
-- LocalStorage support
+A productivity dashboard built with HTML, CSS, and JavaScript that combines multiple daily-use tools in one place.
 
-Tech:
-HTML
-SCSS
-Vanilla JavaScript
+## ✨ Features
+- ✅ **Todo App** — Add, delete, and mark tasks as done
+- ⏱️ **Pomodoro Timer** — Focus session timer with start, pause, reset
+- 🌤️ **Weather Widget** — Real-time weather using OpenWeatherMap API
+- 📅 **Daily Planner** — Schedule your day, data saved with localStorage
+- 💬 **Motivation Quotes** — Random quotes on every visit
+- 🕐 **Real-time Clock** — Live clock and date on dashboard
 
+## 🛠️ Tech Used
+HTML, CSS, JavaScript, OpenWeatherMap API, localStorage
 
-<!-- Daily Plainner  -->
+## 🔗 Links
+- 🌐 Live Demo: [Click Here](https://prodective-dash-board.vercel.app/)
+ 
  
 
